@@ -50,7 +50,7 @@ public class ShareActivity extends AppCompatActivity {
 
         uri = (Uri) getIntent().getExtras().get("uri");
         Picasso.get().load(uri).resize(285, 285).into(immg);
-
+            
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +63,7 @@ public class ShareActivity extends AppCompatActivity {
                 File file = new File(path);
                 try {
                     out = new FileOutputStream(file);
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 70, out); //100
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                     out.flush();
                     out.close();
                 } catch (Exception e) {
