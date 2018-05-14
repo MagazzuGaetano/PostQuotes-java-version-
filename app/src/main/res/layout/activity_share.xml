@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentEnd="false"
+    tools:context=".ShareActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageview"
+                android:layout_width="285dp"
+                android:layout_height="285dp"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentTop="false"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:contentDescription="@string/app_name" />
+
+            <TextView
+                android:id="@+id/quote_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageview"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp"
+                android:text="If the idea at the start is not absurd than there is no hope for it."
+                android:textAlignment="textStart" />
+
+            <TextView
+                android:id="@+id/author_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/quote_txt"
+                android:padding="10dp"
+                android:text="Colt Mcnalis"
+                android:textAlignment="textEnd" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/share_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:tint="#fff"
+        app:backgroundTint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_share_black_24dp" />
+
+</RelativeLayout>
