@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -25,6 +26,7 @@ public class QuotesActivity extends AppCompatActivity{
     private ArrayList<String> keywords;
     private ProgressBar progress;
     private ArrayList<Quote> quotes;
+    private int requestCode;
     private Uri uri;
 
     @Override
@@ -41,6 +43,10 @@ public class QuotesActivity extends AppCompatActivity{
         ImageView image = findViewById(R.id.chosen_image);
 
         Picasso.get().load(uri).resize(285, 285).into(image);
+
+        requestCode = Integer.parseInt(getIntent().getExtras().get("requestCode").toString());
+        if(requestCode == 0)
+            Picasso.get().load(uri).rotate(90).resize(285, 285).into(image);
 
         keywords = new ArrayList<String>();
         keywords.add("sweet");
@@ -71,6 +77,7 @@ public class QuotesActivity extends AppCompatActivity{
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         QuotesAdapter mAdapter = new QuotesAdapter(quotes, new QuotesAdapter.OnItemClickListener() {
             @Override
@@ -79,6 +86,7 @@ public class QuotesActivity extends AppCompatActivity{
                 intent.putExtra("text", item.getQuoteText());
                 intent.putExtra("author", item.getQuoteAuthor());
                 intent.putExtra("uri", uri);
+                intent.putExtra("requestCode", requestCode);
                 startActivity(intent);
             }
         });

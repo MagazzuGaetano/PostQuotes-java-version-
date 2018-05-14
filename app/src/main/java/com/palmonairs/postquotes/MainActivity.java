@@ -93,12 +93,14 @@ public class MainActivity extends AppCompatActivity {
                 Uri uri = data.getData();
                 Intent intent = new Intent(this, QuotesActivity.class);
                 intent.putExtra("uri", uri);
+                intent.putExtra("requestCode", REQUEST_CAMERA);
                 startActivity(intent);
 
             } else if (requestCode == SELECT_FILE) {
                 Uri uri = data.getData();
                 Intent intent = new Intent(this, QuotesActivity.class);
                 intent.putExtra("uri", uri);
+                intent.putExtra("requestCode", SELECT_FILE);
                 startActivity(intent);
             }
         }

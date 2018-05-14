@@ -29,6 +29,7 @@ import com.squareup.picasso.Picasso;
 public class ShareActivity extends AppCompatActivity {
 
     private Uri uri;
+    private int requestCode;
     private ImageView immg;
     private FloatingActionButton fab;
     private TextView quoteTxt, authorTxt;
@@ -50,7 +51,11 @@ public class ShareActivity extends AppCompatActivity {
 
         uri = (Uri) getIntent().getExtras().get("uri");
         Picasso.get().load(uri).resize(285, 285).into(immg);
-            
+
+        requestCode = Integer.parseInt(getIntent().getExtras().get("requestCode").toString());
+        if(requestCode == 0)
+            Picasso.get().load(uri).rotate(90).resize(285, 285).into(immg);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,6 +141,7 @@ public class ShareActivity extends AppCompatActivity {
         onBackPressed();
         Intent i = new Intent(getApplicationContext(), QuotesActivity.class);
         i.putExtra("uri", uri);
+        i.putExtra("requestCode", requestCode);
         startActivity(i);
         return true;
     }
